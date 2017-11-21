@@ -1,11 +1,12 @@
 import React from "react";
+import NewTicketForm from "./NewTicketForm";
 
 class NewTicketControl extends React.Component {
 
  constructor(props) {
     super(props);
     this.state = {formVisibleOnPage: false};
-    this.handleDisplayingNewTicketForm = this.handleDisplayingNewTicketForm.bind(this); 
+    this.handleDisplayingNewTicketForm = this.handleDisplayingNewTicketForm.bind(this);
   }
 
   handleDisplayingNewTicketForm(event){
@@ -14,8 +15,17 @@ class NewTicketControl extends React.Component {
   }
 
   render(){
+    let formAreaContent = null;
+    if (this.state.formVisibleOnPage){
+      formAreaContent = <NewTicketForm/>
+    } else {
+      formAreaContent = <button onClick={this.handleDisplayingNewTicketForm.bind(this)}>Request Help</button>;
+    }
+
     return (
-      <button onClick={this.handleDisplayingNewTicketForm}>Request Help</button>
+     <div>
+       {formAreaContent}
+     </div>
     );
   }
 
