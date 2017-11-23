@@ -1,11 +1,11 @@
 import React from "react";
-import TicketList from './TicketList';
-import NewTicketControl from './NewTicketControl';
+import TicketList from "./TicketList";
+import NewTicketControl from "./NewTicketControl";
 
 class Queue extends React.Component {
 
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
       masterTicketList: [],
     };
@@ -18,7 +18,7 @@ class Queue extends React.Component {
         <TicketList ticketList = {this.state.masterTicketList}/>
         <NewTicketControl onNewTicketCreation= {this.addNewTicketToList}/>
       </div>
-    )
+    );
   }
 
   addNewTicketToList(newTicket){

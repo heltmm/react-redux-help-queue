@@ -6,18 +6,18 @@ import { Modal } from "react-bootstrap";
 
 class NewTicketControl extends React.Component {
 
- constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {formModalIsShowing: false};
     this.showFormModal = this.showFormModal.bind(this);
     this.hideFormModal = this.hideFormModal.bind(this);
   }
 
-  showFormModal(event) {
+  showFormModal() {
     this.setState({formModalIsShowing: true});
   }
 
-  hideFormModal(event) {
+  hideFormModal() {
     this.setState({formModalIsShowing: false});
   }
 
@@ -35,15 +35,15 @@ class NewTicketControl extends React.Component {
           show={this.state.formModalIsShowing}
           onHide={this.hideFormModal}
           bsSize="large">
-           <Modal.Header>
-             <Modal.Title>Request Help</Modal.Title>
-           </Modal.Header>
-           <Modal.Body>
-             <NewTicketForm
+          <Modal.Header>
+            <Modal.Title>Request Help</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <NewTicketForm
               onNewTicketCreation={this.props.onNewTicketCreation}
               hideFormAfterSubmission = {this.hideFormModal}/>
-           </Modal.Body>
-         </Modal>
+          </Modal.Body>
+        </Modal>
       </div>
     );
   }
@@ -52,6 +52,6 @@ class NewTicketControl extends React.Component {
 
 NewTicketControl.propTypes = {
   onNewTicketCreation: PropTypes.func
-}
+};
 
 export default NewTicketControl;
