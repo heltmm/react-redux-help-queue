@@ -12,6 +12,26 @@ class Queue extends React.Component {
     this.addNewTicketToList = this.addNewTicketToList.bind(this);
   }
 
+  componentDidMount() {
+    this.timeSinceOpenedChecker = setInterval(() =>
+      this.updateTicketTimeSinceOpened(),
+      5000
+    );
+  }
+
+  updateTicketTimeSinceOpened() {
+    console.log("check");
+    let newMasterTicketList = this.state.masterTicketList.slice();
+    newMasterTicketList.forEach((ticket) =>
+      ticket.setTimeSinceOpened()
+    );
+    this.setState({masterTicketList:newMasterTicketList})
+  }
+
+  componentWillUnmount(){
+   clearInterval(this.timeSinceOpenedChecker);
+  }
+
   render() {
     return (
       <div>
